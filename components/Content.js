@@ -1,15 +1,26 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import {useRef} from 'react';
+import { useRef } from "react";
+import Image from "next/image";
 
 function Content() {
   const [token, setToken] = useState("generating token...");
   const [track, setTrack] = useState("");
-  const [artist, setArtist] = useState("drake");
+  const [search, setSearch] = useState("");
+  // const [imageLink, setImageLink] = useState("");
+  const [trackID, setTrackID] = useState("3q2v8QaTnHLveAQzR6gvYm");
   const [artistSearch, setArtistSreach] = useState("");
   const inputEl = useRef();
-
+  const [trackFeatures, setTrackFeatures] = useState({
+    danceability: "asd",
+    duration_ms: "asdas",
+    energy: "ad",
+    loudness: "asda",
+    tempo: "asd",
+    time_signature: "asd",
+    valence: "asd",
+  });
 
   //The base URI for all Web API requests is https://api.spotify.com/v1
 
@@ -20,10 +31,11 @@ function Content() {
   //Drake ID: https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4?si=UIqyicucSA2x-fNcCMJHtg
 
   const id = "3TVXtAsR1Inumwj472S9r4";
-  const type = "artist"
+  const type = "track";
   const market = "US";
 
   useEffect(() => {
+    /** AUTHENTICATION  */
     axios("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
@@ -38,50 +50,61 @@ function Content() {
         console.log(tokenresponse.data.access_token);
         setToken(tokenresponse.data.access_token);
 
-        // axios(
-        //   `https://api.spotify.com/v1/artists/${id}/top-tracks?market=${market}`,
-        //   {
-        //     method: "GET",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       Accept: "application/json",
-        //       Authorization: "Bearer " + tokenresponse.data.access_token,
-        //     },
-        //   }
-        // )
-        //   .then((trackres) => {
-        //     console.log(trackres.data.tracks[4].name);
-        //     setTrack(trackres.data.tracks[4].name);
-        //   })
-        //   .catch((error) => console.log(error));
-
-        axios(
-          `https://api.spotify.com/v1/search?q=${artist}&type=${type}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              Authorization: "Bearer " + tokenresponse.data.access_token,
-            },
-          }
-        )
+        /** GET TRACK NAME  */
+        axios(`https://api.spotify.com/v1/search?q=${search}&type=${type}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer " + tokenresponse.data.access_token,
+          },
+        })
           .then((trackres) => {
-            console.log(trackres.data.artists.items[0].name);
+            console.log(trackres.data.tracks.items[0].artists[0].name);
+            setTrackID(trackres.data.tracks.items[0].id);
+            console.log("the actual track ID " + trackres.data.tracks.items[0].id)
+            console.log("the new track ID is " + trackID)
+
+
             // setTrack(trackres.data);
-            setArtistSreach(trackres.data.artists.items[0].popularity)
+            // setArtistSreach(trackres.data.artists.items[0].popularity);
+            // setImageLink(trackres.data.artists.items[0].images[0].url)
+          })
+          .catch((error) => console.log(error));
+
+        /** GET TRACK AUDIO FEATURE  */
+        /** GET TRACK NAME  */
+        axios(`https://api.spotify.com/v1/audio-features/${trackID}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer " + tokenresponse.data.access_token,
+          },
+        })
+          .then((trackres) => {
+            console.log(trackres.data);
+
+            setTrackFeatures({
+              danceability: trackres.data.danceability,
+              duration_ms: trackres.data.duration_ms,
+              energy: trackres.data.energy,
+              loudness: trackres.data.loudness,
+              tempo: trackres.data.tempo,
+              time_signature: trackres.data.time_signature,
+              valence: trackres.data.valence,
+            });
           })
           .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
-  }, [artist]);
+  }, [search, trackID]);
 
   const SearchFunctionHandler = (e) => {
-      e.preventDefault()
-      setArtist(inputEl.current.value);
-      console.log(inputEl.current.value);
-  }
-
+    e.preventDefault();
+    setSearch(inputEl.current.value);
+    console.log(inputEl.current.value);
+  };
 
   return (
     <div>
@@ -90,6 +113,13 @@ function Content() {
         <input type="submit"></input>
       </form>
       <p>{artistSearch}</p>
+      {Object.keys(trackFeatures).map((keyName, i) => (
+        <li key={i}>
+          <span>
+            {keyName} : {trackFeatures[keyName]}
+          </span>
+        </li>
+      ))}
     </div>
   );
 }
