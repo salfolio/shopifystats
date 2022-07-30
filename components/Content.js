@@ -7,12 +7,15 @@ import styles from "./Content.module.css";
 import SearchBar from "./SearchBar";
 import Widget from "./Widget/Widget";
 import SideInfo from "./Widget/SideInfo";
+import TrackInfo from "./Widget/TrackInfo";
+import Header from "./Header";
+
 function Content() {
   const [token, setToken] = useState("generating token...");
   const [track, setTrack] = useState("");
   const [search, setSearch] = useState("");
   // const [imageLink, setImageLink] = useState("");
-  const [trackID, setTrackID] = useState("3q2v8QaTnHLveAQzR6gvYm");
+  const [trackID, setTrackID] = useState("");
   const [trackImage, setTrackImage] = useState("");
   const [artistSearch, setArtistSreach] = useState("");
   const inputEl = useRef();
@@ -119,39 +122,51 @@ function Content() {
 
   return (
     <div className={styles.container}>
-      <SearchBar setSearch={setSearch} />
-      <div className={styles.trackInfo}>
-        <h1>{artistSearch}</h1>
-        <h1>{track}</h1>
-      </div>
-      <div className={styles.content}>
-        <div className={styles.widgets}>
-          <Widget
-            featureName={"DANCEABILITY"}
-            featureValue={trackFeatures.danceability}
-            progressBarColor={"#CA6A82"}
-          />
-          <Widget
-            featureName={"ENERGY"}
-            featureValue={trackFeatures.energy}
-            progressBarColor={"#F1C837"}
-          />
-          {/* <Widget featureName={"INSTRUMENTALNESS"} featureValue={trackFeatures.instrumentalness} progressBarColor={'#E85454'}/> */}
-          {/* <Widget featureName={"ACOUSTICNESS"} featureValue={trackFeatures.acousticness} progressBarColor={'#D49357'}/> */}
-          <Widget
-            featureName={"VALENCE"}
-            featureValue={trackFeatures.valence}
-            progressBarColor={"#57D46B"}
-          />
-          {/* <Widget featureName={"SPEECHINESS"} featureValue={trackFeatures.speechiness} progressBarColor={'#87C2D5'}/> */}
+      <div className={styles.header}>
+        <div className={styles.headerContainer}>
+          <Header />
         </div>
-        <div>
-         <SideInfo 
-            duration={trackFeatures.duration_ms}
-            tempo={trackFeatures.tempo}
-            timeSignature={trackFeatures.time_signature}
-            loudness={trackFeatures.loudness}
-         />
+        <div className={styles.searchBarContainer}>
+          <SearchBar setSearch={setSearch} />
+        </div>
+      </div>
+      <div className={styles.contentContainer}>
+        <TrackInfo artistSearch={artistSearch} track={track} />
+        <div className={styles.content}>
+          <div className={styles.widgets}>
+            <Widget
+              featureName={"DANCEABILITY"}
+              featureValue={trackFeatures.danceability}
+              progressBarColor={"#CA6A82"}
+            />
+            <Widget
+              featureName={"ENERGY"}
+              featureValue={trackFeatures.energy}
+              progressBarColor={"#F1C837"}
+            />
+            {/* <Widget featureName={"INSTRUMENTALNESS"} featureValue={trackFeatures.instrumentalness} progressBarColor={'#E85454'}/> */}
+            {/* <Widget featureName={"ACOUSTICNESS"} featureValue={trackFeatures.acousticness} progressBarColor={'#D49357'}/> */}
+            <Widget
+              featureName={"VALENCE"}
+              featureValue={trackFeatures.valence}
+              progressBarColor={"#57D46B"}
+            />
+            {/* <Widget featureName={"SPEECHINESS"} featureValue={trackFeatures.speechiness} progressBarColor={'#87C2D5'}/> */}
+          </div>
+          <div className={styles.sideInfoContainer}>
+            <SideInfo
+              duration={trackFeatures.duration_ms}
+              tempo={trackFeatures.tempo}
+              timeSignature={trackFeatures.time_signature}
+              loudness={trackFeatures.loudness}
+            />
+            <SideInfo
+              duration={trackFeatures.duration_ms}
+              tempo={trackFeatures.tempo}
+              timeSignature={trackFeatures.time_signature}
+              loudness={trackFeatures.loudness}
+            />
+          </div>
         </div>
       </div>
     </div>

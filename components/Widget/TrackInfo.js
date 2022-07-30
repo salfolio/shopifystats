@@ -1,14 +1,22 @@
 import styles from "./Widget.module.css";
 
-function TrackInfo() {
-  return (
-    <div>
+function TrackInfo(props) {
+  if (props.artistSearch === "") {
+    return (
       <div className={styles.trackInfo}>
-        <h1>{artistSearch}</h1>
-        <h1>{track}</h1>
+        <div className={styles.trackInfoFields}>
+          <p>Search for track to get audio features...</p>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className={styles.trackInfo}>
+      <div className={styles.trackInfoFields}>
+        <p>{`${props.artistSearch} - ${props.track}`}</p>
       </div>
     </div>
   );
 }
 
-TrackInfo;
+export default TrackInfo;

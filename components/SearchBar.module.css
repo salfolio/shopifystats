@@ -1,8 +1,8 @@
-.searchBar {
+/* .searchBar {
     position: absolute;
     top: .5rem;
     margin: 1rem;
-}
+} */
 
 
 .searchBar input[type=text] {
@@ -15,7 +15,11 @@
     border-style: solid;
     color: white;
     outline: none;
-    width: 20rem;
+    width: 25rem;
+    font-weight: 100;
+    font-family: 'Roboto Mono', monospace;
+    border-width: 1px;
+
 
 }
 
@@ -25,10 +29,14 @@
 }
 
 .searchBar input[type=submit] {
-    padding: 0.5rem 1rem;
-    font-size: 17px;
+    padding: 0.60rem 1.5rem;
+    font-size: 18px;
+    background-color: #F09D51;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    color: white;
     border: none;
     border-radius: 0.25rem;
-    margin-left: 0.5rem;
+    margin-left: 0.75rem;
     cursor: pointer;
 }
