@@ -1,4 +1,4 @@
-import styles from "./Widget.module.css";
+import styles from "./TrackInfo.module.css";
 
 function TrackInfo(props) {
   if (props.artistSearch === "") {

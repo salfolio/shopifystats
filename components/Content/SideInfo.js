@@ -1,4 +1,4 @@
-import styles from "./Widget.module.css";
+import styles from "./SideInfo.module.css";
 
 function SideInfo(props) {
 

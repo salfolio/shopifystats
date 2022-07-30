@@ -1,9 +1,7 @@
-/* .searchBar {
-    position: absolute;
-    top: .5rem;
-    margin: 1rem;
-} */
 
+.searchBar{
+    width: 100%;
+}
 
 .searchBar input[type=text] {
     padding: 0.5rem;
@@ -15,12 +13,10 @@
     border-style: solid;
     color: white;
     outline: none;
-    width: 25rem;
+    width: 20rem;
     font-weight: 100;
     font-family: 'Roboto Mono', monospace;
     border-width: 1px;
-
-
 }
 
 .searchBar input::placeholder {
@@ -29,7 +25,7 @@
 }
 
 .searchBar input[type=submit] {
-    padding: 0.60rem 1.5rem;
+    padding: 0.50rem 1.5rem;
     font-size: 18px;
     background-color: #F09D51;
     font-family: 'Roboto Mono', monospace;

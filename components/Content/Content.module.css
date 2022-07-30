@@ -1,0 +1,27 @@
+
+.container {
+    display: flex;
+    width: 900px;
+    background-color: #202837;
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.featuresContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@media screen and (max-width: 850px) {
+    .container{
+        width: 100%;
+        border-radius: none;
+    }
+    .featuresContainer{
+        display: flex;
+        flex-direction: column;
+    }
+  }

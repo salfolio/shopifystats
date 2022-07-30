@@ -1,0 +1,17 @@
+.trackInfo {
+    padding: 0.5rem;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.trackInfo p {
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.trackInfoFields {
+    font-weight: 100;
+    text-align: center;
+}

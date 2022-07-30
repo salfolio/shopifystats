@@ -2,23 +2,18 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import Image from "next/image";
-import styles from "./Content.module.css";
-import SearchBar from "./SearchBar";
-import Widget from "./Widget/Widget";
-import SideInfo from "./Widget/SideInfo";
-import TrackInfo from "./Widget/TrackInfo";
-import Header from "./Header";
+import styles from "./Main.module.css";
+import Header from "./Header/Header";
+import Content from './Content/Content';
 
-function Content() {
+
+function Main() {
   const [token, setToken] = useState("generating token...");
   const [track, setTrack] = useState("");
   const [search, setSearch] = useState("");
-  // const [imageLink, setImageLink] = useState("");
   const [trackID, setTrackID] = useState("");
-  const [trackImage, setTrackImage] = useState("");
   const [artistSearch, setArtistSreach] = useState("");
-  const inputEl = useRef();
+
   const [trackFeatures, setTrackFeatures] = useState({
     danceability: "",
     speechiness: "",
@@ -123,54 +118,25 @@ function Content() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.headerContainer}>
-          <Header />
-        </div>
-        <div className={styles.searchBarContainer}>
-          <SearchBar setSearch={setSearch} />
-        </div>
+        <Header setSearch={setSearch} />
       </div>
-      <div className={styles.contentContainer}>
-        <TrackInfo artistSearch={artistSearch} track={track} />
-        <div className={styles.content}>
-          <div className={styles.widgets}>
-            <Widget
-              featureName={"DANCEABILITY"}
-              featureValue={trackFeatures.danceability}
-              progressBarColor={"#CA6A82"}
-            />
-            <Widget
-              featureName={"ENERGY"}
-              featureValue={trackFeatures.energy}
-              progressBarColor={"#F1C837"}
-            />
-            {/* <Widget featureName={"INSTRUMENTALNESS"} featureValue={trackFeatures.instrumentalness} progressBarColor={'#E85454'}/> */}
-            {/* <Widget featureName={"ACOUSTICNESS"} featureValue={trackFeatures.acousticness} progressBarColor={'#D49357'}/> */}
-            <Widget
-              featureName={"VALENCE"}
-              featureValue={trackFeatures.valence}
-              progressBarColor={"#57D46B"}
-            />
-            {/* <Widget featureName={"SPEECHINESS"} featureValue={trackFeatures.speechiness} progressBarColor={'#87C2D5'}/> */}
-          </div>
-          <div className={styles.sideInfoContainer}>
-            <SideInfo
-              duration={trackFeatures.duration_ms}
-              tempo={trackFeatures.tempo}
-              timeSignature={trackFeatures.time_signature}
-              loudness={trackFeatures.loudness}
-            />
-            <SideInfo
-              duration={trackFeatures.duration_ms}
-              tempo={trackFeatures.tempo}
-              timeSignature={trackFeatures.time_signature}
-              loudness={trackFeatures.loudness}
-            />
-          </div>
-        </div>
-      </div>
+        <Content
+          artistSearch={artistSearch}
+          track={track}
+
+          duration={trackFeatures.duration_ms}
+          tempo={trackFeatures.tempo}
+          timeSignature={trackFeatures.time_signature}
+          loudness={trackFeatures.loudness}
+
+          featureValue={[
+            trackFeatures.danceability,
+            trackFeatures.energy,
+            trackFeatures.valence,
+          ]}
+        />
     </div>
   );
 }
 
-export default Content;
+export default Main;

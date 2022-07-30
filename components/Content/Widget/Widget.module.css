@@ -1,3 +1,13 @@
+
+.widgets {
+    display: flex;
+    padding: 0.25rem;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 350px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -7,7 +17,7 @@
     height: 130px;
     border-radius: 1.5rem;
     background-color: #293650;
-    margin: 0.50rem;
+    margin: 0.75rem;
 }
 
 .featureTextContainer {
@@ -49,47 +59,4 @@
     transition: width 1s; 
 }
 
-.trackInfo {
-    padding: 0.5rem;
-    font-size: 20px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
 
-}
-
-.trackInfo p {
-    margin: 0;
-    padding: 0.5rem;
-}
-
-.trackInfoFields {
-    font-weight: 100;
-    text-align: center;
-}
-
-.sideInfo {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    padding: 0rem 3rem;
-}
-
-.infoBox {
-    margin-top: 2rem;
-
-}
-
-.sideInfoName p {
-    margin: 0;
-    padding: 0;
-    opacity: 0.5;
-    font-size: 18px;
-}
-
-.sideInfoValue p {
-    margin: 0;
-    padding: 0;
-    font-size: 28px;
-    font-weight: 200;
-}
