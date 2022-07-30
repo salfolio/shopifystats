@@ -3,23 +3,30 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import Image from "next/image";
-
+import styles from "./Content.module.css";
+import SearchBar from "./SearchBar";
+import Widget from "./Widget/Widget";
+import SideInfo from "./Widget/SideInfo";
 function Content() {
   const [token, setToken] = useState("generating token...");
   const [track, setTrack] = useState("");
   const [search, setSearch] = useState("");
   // const [imageLink, setImageLink] = useState("");
   const [trackID, setTrackID] = useState("3q2v8QaTnHLveAQzR6gvYm");
+  const [trackImage, setTrackImage] = useState("");
   const [artistSearch, setArtistSreach] = useState("");
   const inputEl = useRef();
   const [trackFeatures, setTrackFeatures] = useState({
-    danceability: "asd",
-    duration_ms: "asdas",
-    energy: "ad",
-    loudness: "asda",
-    tempo: "asd",
-    time_signature: "asd",
-    valence: "asd",
+    danceability: "",
+    speechiness: "",
+    instrumentalness: "",
+    duration_ms: "",
+    acousticness: "",
+    valence: "",
+    energy: "",
+    loudness: "",
+    tempo: "",
+    time_signature: "",
   });
 
   //The base URI for all Web API requests is https://api.spotify.com/v1
@@ -61,13 +68,20 @@ function Content() {
         })
           .then((trackres) => {
             console.log(trackres.data.tracks.items[0].artists[0].name);
+            console.log(trackres.data.tracks.items[0].name);
+            console.log(trackres.data);
+
             setTrackID(trackres.data.tracks.items[0].id);
-            console.log("the actual track ID " + trackres.data.tracks.items[0].id)
-            console.log("the new track ID is " + trackID)
+            // setTrackImage(trackres.data.tracks.items[0].images[0].url);
+            // console.log(trackres.data.tracks.items[0].images[0].url);
+            setTrack(trackres.data.tracks.items[0].name);
+            console.log(
+              "the actual track ID " + trackres.data.tracks.items[0].id
+            );
+            console.log("the new track ID is " + trackID);
 
-
-            // setTrack(trackres.data);
-            // setArtistSreach(trackres.data.artists.items[0].popularity);
+            setArtistSreach(trackres.data.tracks.items[0].artists[0].name);
+            console.log(trackres.data);
             // setImageLink(trackres.data.artists.items[0].images[0].url)
           })
           .catch((error) => console.log(error));
@@ -87,39 +101,59 @@ function Content() {
 
             setTrackFeatures({
               danceability: trackres.data.danceability,
+              speechiness: trackres.data.speechiness,
+              instrumentalness: trackres.data.instrumentalness,
               duration_ms: trackres.data.duration_ms,
+              acousticness: trackres.data.acousticness,
+              valence: trackres.data.valence,
               energy: trackres.data.energy,
               loudness: trackres.data.loudness,
               tempo: trackres.data.tempo,
               time_signature: trackres.data.time_signature,
-              valence: trackres.data.valence,
             });
           })
           .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
-  }, [search, trackID]);
-
-  const SearchFunctionHandler = (e) => {
-    e.preventDefault();
-    setSearch(inputEl.current.value);
-    console.log(inputEl.current.value);
-  };
+  }, [search, trackID, artistSearch]);
 
   return (
-    <div>
-      <form onSubmit={SearchFunctionHandler}>
-        <input ref={inputEl}></input>
-        <input type="submit"></input>
-      </form>
-      <p>{artistSearch}</p>
-      {Object.keys(trackFeatures).map((keyName, i) => (
-        <li key={i}>
-          <span>
-            {keyName} : {trackFeatures[keyName]}
-          </span>
-        </li>
-      ))}
+    <div className={styles.container}>
+      <SearchBar setSearch={setSearch} />
+      <div className={styles.trackInfo}>
+        <h1>{artistSearch}</h1>
+        <h1>{track}</h1>
+      </div>
+      <div className={styles.content}>
+        <div className={styles.widgets}>
+          <Widget
+            featureName={"DANCEABILITY"}
+            featureValue={trackFeatures.danceability}
+            progressBarColor={"#CA6A82"}
+          />
+          <Widget
+            featureName={"ENERGY"}
+            featureValue={trackFeatures.energy}
+            progressBarColor={"#F1C837"}
+          />
+          {/* <Widget featureName={"INSTRUMENTALNESS"} featureValue={trackFeatures.instrumentalness} progressBarColor={'#E85454'}/> */}
+          {/* <Widget featureName={"ACOUSTICNESS"} featureValue={trackFeatures.acousticness} progressBarColor={'#D49357'}/> */}
+          <Widget
+            featureName={"VALENCE"}
+            featureValue={trackFeatures.valence}
+            progressBarColor={"#57D46B"}
+          />
+          {/* <Widget featureName={"SPEECHINESS"} featureValue={trackFeatures.speechiness} progressBarColor={'#87C2D5'}/> */}
+        </div>
+        <div>
+         <SideInfo 
+            duration={trackFeatures.duration_ms}
+            tempo={trackFeatures.tempo}
+            timeSignature={trackFeatures.time_signature}
+            loudness={trackFeatures.loudness}
+         />
+        </div>
+      </div>
     </div>
   );
 }
