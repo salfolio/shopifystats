@@ -6,6 +6,9 @@ import Footer from '../components/Footer/Footer';
 export default function Home() {
   return (
     <div>
+      <Head>
+        <title>Trackstats - Search Audio Features</title>
+      </Head>
         <Main />
         <Footer />
     </div>
