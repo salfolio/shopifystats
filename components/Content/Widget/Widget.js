@@ -16,6 +16,9 @@ function Widget(props) {
     } else {
       setFeatureValue(props.featureValue);
     }
+    if (props.featureValue === "") {
+      setFeatureValue(0);
+    }
   }, []);
 
   return (
