@@ -11,13 +11,18 @@ function Content(props) {
       </div>
       <div className={styles.featuresContainer}>
         <WidgetContainer
-          featureValue={props.featureValue} //this is an array
+          featureValue={props.featureValue} //this is an array of feature values
         />
         <SideInfoContainer
           duration={props.duration}
           tempo={props.tempo}
           timeSignature={props.timeSignature}
           loudness={props.loudness}
+          key={props.key}
+          acousticness={props.acousticness}
+          speechiness={props.speechiness}
+          instrumentalness={props.instrumentalness}
+          
         />
       </div>
     </div>

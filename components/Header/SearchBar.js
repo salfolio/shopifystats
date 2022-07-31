@@ -14,7 +14,7 @@ function SearchBar(props) {
     <div className={styles.searchBar}>
       <form onSubmit={SearchFunctionHandler}>
         <input type="text" ref={inputEl} placeholder="Search Track..."></input>
-        <input type="submit" value="Search"></input>
+        <input type="submit" id="button" value="Search"></input>
       </form>
     </div>
   );

@@ -9,12 +9,10 @@ function SideInfoContainer(props) {
         tempo={props.tempo}
         timeSignature={props.timeSignature}
         loudness={props.loudness}
-      />
-      <SideInfo
-        duration={props.duration}
-        tempo={props.tempo}
-        timeSignature={props.timeSignature}
-        loudness={props.loudness}
+        acousticness={props.acousticness}
+        instrumentalness={props.instrumentalness}
+        key={props.key}
+        speechiness={props.speechiness}
       />
     </div>
   );

@@ -1,7 +1,4 @@
 
-.searchBar{
-    width: 100%;
-}
 
 .searchBar input[type=text] {
     padding: 0.5rem;
@@ -35,4 +32,54 @@
     border-radius: 0.25rem;
     margin-left: 0.75rem;
     cursor: pointer;
+    transition: transform 0.2s;
 }
+
+.searchBar input[type=submit]:hover {
+    transform: scale(0.98);
+}
+
+
+@media screen and (max-width: 900px) {
+    .searchBar input[type=text] {
+        padding: 0.5rem;
+        width: 20rem;
+        margin: 0;
+
+    }
+    .searchBar input[type=submit] {
+        padding: 0.50rem 0.75rem;
+        font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .searchBar input[type=text] {
+        padding: 0.5rem;
+        width: 15rem;
+        margin: 0;
+
+    }
+    .searchBar input[type=submit] {
+        padding: 0.50rem 0.75rem;
+        font-size: 18px;
+    }
+  }
+
+
+
+
+  @media screen and (max-width: 400px) {
+    .searchBar input[type=text] {
+        padding: 0.5rem;
+        width: 12rem;
+        margin: 0;
+
+    }
+    .searchBar input[type=submit] {
+        padding: 0.50rem 0.75rem;
+        font-size: 18px;
+    }
+  }
+
+

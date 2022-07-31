@@ -5,8 +5,10 @@ function Header(props) {
   return (
     <div className={styles.container}>
       <div className={styles.logoContainer}>
-        <img src="./images/logo/trackstatslogo.png" width="50px"></img>
-        <p>trackstats</p>
+        <div className={styles.logo}>
+          <img src="./images/logo/trackstatslogo.png" width="50px"></img>
+          <p>trackstats</p>
+        </div>
       </div>
       <div className={styles.searchBarContainer}>
         <SearchBar setSearch={props.setSearch} />

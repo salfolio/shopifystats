@@ -1,11 +1,10 @@
 
 .widgets {
     display: flex;
-    padding: 0.25rem;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    width: 350px;
+    width: 650px;
 }
 
 .container {
@@ -13,11 +12,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 350px;
+    width: 300px;
     height: 130px;
     border-radius: 1.5rem;
     background-color: #293650;
-    margin: 0.75rem;
+    margin: 0.50rem;
 }
 
 .featureTextContainer {
@@ -31,21 +30,21 @@
     font-size: 16px;
     opacity: 0.5;
     margin: 0;
-    margin-left: 0.25rem;
+    margin-left: 1.25rem;
     padding: 0;
 }
 
 .featureValue p {
     font-size: 30px;
     margin: 0.20rem;
-    margin-left: 0.25rem;
+    margin-left: 1.25rem;
     margin-bottom: 0.5rem;
     padding: 0;
     font-weight: 200;
 }
 
 .outerProgressBar {
-    width: 300px;
+    width: 260px;
     background-color: #1c1d1f;
     height: 16px;
     border-radius: 1rem;
@@ -59,4 +58,96 @@
     transition: width 1s; 
 }
 
+
+@media screen and (max-width: 850px) {
+    .widgets{
+        width: 100%;
+        border-radius: none;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 320px;
+        height: 110px;
+        border-radius: 0.25rem;
+        background-color: #293650;
+        margin: 0.50rem;
+    }
+    
+    .featureName p {
+        font-size: 16px;
+        opacity: 0.5;
+        margin: 0;
+        margin-left: 1.25rem;
+        padding: 0;
+    }
+    
+    .featureValue p {
+        font-size: 22px;
+        margin: 0.20rem;
+        margin-left: 1.25rem;
+        margin-bottom: 0.5rem;
+        padding: 0;
+        font-weight: 200;
+    }
+    .outerProgressBar {
+        width: 260px;
+        background-color: #1c1d1f;
+        height: 12px;
+        border-radius: 1rem;
+    }
+    
+    .innerProgressBar {
+        width: 100px;
+        height: 12px;
+        border-radius: 1rem;
+    }
+    
+    
+  }
+
+
+
+  @media screen and (max-width: 370px) {
+
+    .widget{
+        width: 100%;
+    }
+    .container{
+        width: 100%;
+        border-radius: none;
+    }
+
+    .featureName p {
+        font-size: 16px;
+        opacity: 0.5;
+        margin: 0;
+        margin-left: 1.25rem;
+        padding: 0;
+    }
+    
+    .featureValue p {
+        font-size: 22px;
+        margin: 0.20rem;
+        margin-left: 1.25rem;
+        margin-bottom: 0.5rem;
+        font-weight: 200;
+    }
+    .outerProgressBar {
+        width: 260px;
+        background-color: #1c1d1f;
+        height: 12px;
+        border-radius: 1rem;
+    }
+    
+    .innerProgressBar {
+        width: 100px;
+        height: 12px;
+        border-radius: 1rem;
+    }
+    
+    
+  }
 

@@ -25,6 +25,7 @@ function Main() {
     loudness: "",
     tempo: "",
     time_signature: "",
+    key: "",
   });
 
   //The base URI for all Web API requests is https://api.spotify.com/v1
@@ -108,6 +109,7 @@ function Main() {
               loudness: trackres.data.loudness,
               tempo: trackres.data.tempo,
               time_signature: trackres.data.time_signature,
+              key: trackres.data.key,
             });
           })
           .catch((error) => console.log(error));
@@ -128,11 +130,18 @@ function Main() {
           tempo={trackFeatures.tempo}
           timeSignature={trackFeatures.time_signature}
           loudness={trackFeatures.loudness}
+          key={trackFeatures.key}
+          acousticness={trackFeatures.acousticness}
+          speechiness={trackFeatures.speechiness}
+          instrumentalness={trackFeatures.instrumentalness}
 
           featureValue={[
             trackFeatures.danceability,
             trackFeatures.energy,
             trackFeatures.valence,
+            trackFeatures.acousticness,
+            trackFeatures.speechiness,
+            trackFeatures.instrumentalness,
           ]}
         />
     </div>

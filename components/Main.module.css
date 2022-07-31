@@ -9,7 +9,6 @@
 .header{
     padding: 0.1rem;
     display: flex;
-    width: 900px;
     align-items: center;
     justify-content: space-between;
 }

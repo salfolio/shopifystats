@@ -1,13 +1,13 @@
 import styles from "./Widget.module.css";
 function ProgressBar(props) {
-  const progressBarWidth = props.featureValue * 300;
+  // const progressBarWidth = props.featureValue * 260;
 
   return (
     <div className={styles.outerProgressBar}>
       <div
         className={styles.innerProgressBar}
         style={{
-          width: progressBarWidth,
+          width: ((props.featureValue) * 260),
           backgroundColor: props.progressBarColor,
         }}
       ></div>

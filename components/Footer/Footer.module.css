@@ -1,0 +1,17 @@
+.container{
+    font-size: 14px;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 200;
+    opacity: 0.5;
+    margin-top: 3rem;
+    padding: 0.5rem;
+}
+
+@media screen and (max-width: 850px) {
+    .container{
+        margin-top: 0.5rem;
+        padding: 1rem;
+        font-size: 10px;
+    }
+  }

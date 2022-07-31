@@ -1,9 +1,11 @@
 .trackInfo {
-    padding: 0.5rem;
+    padding: 0.25rem;
     font-size: 20px;
     display: flex;
     text-align: center;
     justify-content: center;
+    background-color: rgb(47, 63, 90);
+    border-radius: 1rem 1rem 0.0rem 0.0rem;
 }
 
 .trackInfo p {
@@ -12,6 +14,19 @@
 }
 
 .trackInfoFields {
-    font-weight: 100;
+    font-weight: 200;
     text-align: center;
 }
+
+
+@media screen and (max-width: 850px) {
+    .trackInfo{
+        background-color: rgb(47, 63, 90);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        border-radius: 0px;
+        font-size: 16px;
+    }
+  }
+  
+

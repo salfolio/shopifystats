@@ -19,6 +19,21 @@ function WidgetContainer(props) {
         featureValue={props.featureValue[2]}
         progressBarColor={"#57D46B"}
       />
+       <Widget
+        featureName={"ACOUSTICNESS"}
+        featureValue={props.featureValue[3]}
+        progressBarColor={"#E85454"}
+      />
+       <Widget
+        featureName={"INSTRUMENTALNESS"}
+        featureValue={props.featureValue[4]}
+        progressBarColor={"#87C2D5"}
+      />
+       <Widget
+        featureName={"SPEECHINESS"}
+        featureValue={props.featureValue[5]}
+        progressBarColor={"#D49357"}
+      />
     </div>
   );
 }
