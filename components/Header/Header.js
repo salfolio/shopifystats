@@ -11,7 +11,7 @@ function Header(props) {
         </div>
       </div>
       <div className={styles.searchBarContainer}>
-        <SearchBar setSearch={props.setSearch} />
+        <SearchBar setSearch={props.setSearch}  setSearchVal={props.setSearchVal}/>
       </div>
     </div>
   );

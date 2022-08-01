@@ -11,7 +11,7 @@ function SideInfoContainer(props) {
         loudness={props.loudness}
         acousticness={props.acousticness}
         instrumentalness={props.instrumentalness}
-        key={props.key}
+        keyVal={props.keyVal}
         speechiness={props.speechiness}
       />
     </div>

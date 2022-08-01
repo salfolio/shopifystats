@@ -4,8 +4,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import styles from "./Main.module.css";
 import Header from "./Header/Header";
-import Content from './Content/Content';
-
+import Content from "./Content/Content";
 
 function Main() {
   const [token, setToken] = useState("generating token...");
@@ -13,6 +12,9 @@ function Main() {
   const [search, setSearch] = useState("");
   const [trackID, setTrackID] = useState("");
   const [artistSearch, setArtistSreach] = useState("");
+
+  //State to handle default values. When false make all values default to zero (before any search has happened)
+  const [searchVal, setSearchVal] = useState(false);
 
   const [trackFeatures, setTrackFeatures] = useState({
     danceability: "",
@@ -30,15 +32,8 @@ function Main() {
 
   //The base URI for all Web API requests is https://api.spotify.com/v1
 
-  const client_id = "72a20b1835c8435583bd5e70ef1b7f84"; // Your client id
-  const client_secret = "b81e1eab4da14a5c99341b5d22f4228b"; // Your secret
-  const redirect_uri = "REDIRECT_URI"; // Your redirect uri
-
-  //Drake ID: https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4?si=UIqyicucSA2x-fNcCMJHtg
-
-  const id = "3TVXtAsR1Inumwj472S9r4";
-  const type = "track";
-  const market = "US";
+  const client_id = process.env.CLIENT_ID; // Your client id
+  const client_secret = process.env.CLIENT_SECRET; // Your secret
 
   useEffect(() => {
     /** AUTHENTICATION  */
@@ -57,7 +52,7 @@ function Main() {
         setToken(tokenresponse.data.access_token);
 
         /** GET TRACK NAME  */
-        axios(`https://api.spotify.com/v1/search?q=${search}&type=${type}`, {
+        axios(`https://api.spotify.com/v1/search?q=${search}&type=track`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -120,12 +115,12 @@ function Main() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Header setSearch={setSearch} />
+        <Header setSearch={setSearch} setSearchVal={setSearchVal} />
       </div>
+      {searchVal ? (
         <Content
           artistSearch={artistSearch}
           track={track}
-
           duration={trackFeatures.duration_ms}
           tempo={trackFeatures.tempo}
           timeSignature={trackFeatures.time_signature}
@@ -134,7 +129,6 @@ function Main() {
           acousticness={trackFeatures.acousticness}
           speechiness={trackFeatures.speechiness}
           instrumentalness={trackFeatures.instrumentalness}
-
           featureValue={[
             trackFeatures.danceability,
             trackFeatures.energy,
@@ -144,6 +138,18 @@ function Main() {
             trackFeatures.instrumentalness,
           ]}
         />
+      ) : (
+        <Content
+          artistSearch={artistSearch}
+          track={track}
+          duration={"0"}
+          tempo={"0"}
+          timeSignature={"0"}
+          loudness={"0"}
+          key={"0"}
+          featureValue={[0, 0, 0, 0, 0, 0]}
+        />
+      )}
     </div>
   );
 }

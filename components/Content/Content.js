@@ -18,11 +18,10 @@ function Content(props) {
           tempo={props.tempo}
           timeSignature={props.timeSignature}
           loudness={props.loudness}
-          key={props.key}
+          keyVal={props.keyVal}
           acousticness={props.acousticness}
           speechiness={props.speechiness}
           instrumentalness={props.instrumentalness}
-          
         />
       </div>
     </div>

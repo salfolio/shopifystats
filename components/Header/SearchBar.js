@@ -8,6 +8,7 @@ function SearchBar(props) {
     e.preventDefault();
     props.setSearch(inputEl.current.value);
     console.log(inputEl.current.value);
+    props.setSearchVal(true);
   };
 
   return (

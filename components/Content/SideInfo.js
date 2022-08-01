@@ -7,6 +7,9 @@ function SideInfo(props) {
     var seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
+  
+  const tempoHeader = 'TEMPO (BPM)'
+  const loudnessHeader = 'LOUDNESS (dB)'
 
   return (
     <div className={styles.sideInfo}>
@@ -24,10 +27,10 @@ function SideInfo(props) {
         {/** TRACK TEMPO */}
         <div className={styles.infoBox}>
           <div className={styles.sideInfoName}>
-            <p>TEMPO</p>
+            <p>{tempoHeader}</p>
           </div>
           <div className={styles.sideInfoValue}>
-            <p>{props.tempo}</p>
+            <p>{Math.round(props.tempo)}</p>
           </div>
         </div>
 
@@ -44,10 +47,10 @@ function SideInfo(props) {
         {/** TRACK LOUDNESS */}
         <div className={styles.infoBox}>
           <div className={styles.sideInfoName}>
-            <p>LOUDNESS</p>
+            <p>{loudnessHeader}</p>
           </div>
           <div className={styles.sideInfoValue}>
-            <p>{props.loudness}</p>
+            <p>{Math.round(props.loudness)}</p>
           </div>
         </div>
         {/** ROW 2 */}
