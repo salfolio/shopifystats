@@ -6,7 +6,7 @@ function Footer() {
     const name = 'Salman Khattak'
 
     return <div className={styles.container}>
-        <p>{footerText} <a href='https://www.salfolio.com/' target="_blank">Salman Khattak</a></p>
+        <p>{footerText} <a href='https://www.salfolio.com/' target="_blank" rel="noreferrer">Salman Khattak</a></p>
     </div>
 }
 
