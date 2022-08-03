@@ -82,3 +82,16 @@
     margin-top: 0.5rem;
 }
 
+@media screen and (max-width: 600px) {
+    .modal{
+        width: 95%;
+        padding: 0.25rem;
+        padding-top: 1rem;
+    }
+    .intro{
+        width: 98%;
+    }
+    .body{
+        padding: 1rem;
+    }
+  }
