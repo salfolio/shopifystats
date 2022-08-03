@@ -1,0 +1,84 @@
+/* HEADER STYLING */
+
+.modalBackground {
+    background: #131D30;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.modal{
+    justify-content: center;
+    width: 550px;
+    margin: auto;
+    padding: 2.5rem;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pageHeader p{
+    font-size: 28px;
+    font-weight: 200;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+
+.closeIcon{
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.closeIcon:hover{
+    transform: scale(0.95);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BODY STYLING */
+
+.body{
+    /* background-color: blue; */
+    padding: 2rem;
+}
+
+.intro{
+    text-align: center;
+    font-size: 18px;
+    width: 90%;
+    margin: auto;
+    font-weight: 200;
+    margin-bottom: 2.5rem;
+}
+
+/* INFO BLOCK STYLING */
+
+.infoBlockContainer{
+    padding: 0.25rem;
+    padding-bottom: 1rem;
+}
+
+.infoBlockContainer h2{
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.infoBlockContainer p{
+    font-weight: 200;
+    font-size: 16px;
+    opacity: 0.5;
+    margin-top: 0.5rem;
+}
+

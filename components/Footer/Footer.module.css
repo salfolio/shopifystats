@@ -3,9 +3,26 @@
     text-align: center;
     font-family: 'Roboto Mono', monospace;
     font-weight: 200;
-    opacity: 0.5;
-    margin-top: 3rem;
+    margin-top: 2rem;
     padding: 0.5rem;
+}
+
+
+.container a{
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    border-style: solid;
+    border-color: #F09D51;
+    border-width: 0.1rem;
+    color: #F09D51;
+    transition: background-color 0.5s, color 0.5s;
+
+}
+
+.container a:hover{
+    background-color: #F09D51;
+    color: white;
 }
 
 @media screen and (max-width: 850px) {
