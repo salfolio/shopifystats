@@ -10,7 +10,6 @@ export default function Home() {
         <title>Trackstats - Search Audio Features</title>
       </Head>
         <Main />
-        <Footer />
     </div>
   )
 }

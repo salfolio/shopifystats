@@ -5,6 +5,7 @@ import { useRef } from "react";
 import styles from "./Main.module.css";
 import Header from "./Header/Header";
 import Content from "./Content/Content";
+import Footer from "./Footer/Footer";
 
 function Main() {
   const [token, setToken] = useState("generating token...");
@@ -32,8 +33,9 @@ function Main() {
 
   //The base URI for all Web API requests is https://api.spotify.com/v1
 
-  const client_id = process.env.CLIENT_ID; // Your client id
-  const client_secret = process.env.CLIENT_SECRET; // Your secret
+  const client_id = process.env.NEXT_PUBLIC_CLIENT_ID; // Your client id
+  const client_secret = process.env.NEXT_PUBLIC_CLIENT_SECRET; // Your secret
+
 
   useEffect(() => {
     /** AUTHENTICATION  */
@@ -48,7 +50,7 @@ function Main() {
       data: "grant_type=client_credentials",
     })
       .then((tokenresponse) => {
-        console.log(tokenresponse.data.access_token);
+        // console.log(tokenresponse.data.access_token);
         setToken(tokenresponse.data.access_token);
 
         /** GET TRACK NAME  */
@@ -61,21 +63,20 @@ function Main() {
           },
         })
           .then((trackres) => {
-            console.log(trackres.data.tracks.items[0].artists[0].name);
-            console.log(trackres.data.tracks.items[0].name);
-            console.log(trackres.data);
+            // console.log(trackres.data.tracks.items[0].artists[0].name);
+            // console.log(trackres.data.tracks.items[0].name);
+            // console.log(trackres.data);
 
             setTrackID(trackres.data.tracks.items[0].id);
             // setTrackImage(trackres.data.tracks.items[0].images[0].url);
             // console.log(trackres.data.tracks.items[0].images[0].url);
             setTrack(trackres.data.tracks.items[0].name);
-            console.log(
-              "the actual track ID " + trackres.data.tracks.items[0].id
-            );
-            console.log("the new track ID is " + trackID);
+            // console.log(
+            //   "the actual track ID " + trackres.data.tracks.items[0].id
+            // );
 
             setArtistSreach(trackres.data.tracks.items[0].artists[0].name);
-            console.log(trackres.data);
+            // console.log(trackres.data);
             // setImageLink(trackres.data.artists.items[0].images[0].url)
           })
           .catch((error) => console.log(error));
@@ -91,7 +92,7 @@ function Main() {
           },
         })
           .then((trackres) => {
-            console.log(trackres.data);
+            // console.log(trackres.data);
 
             setTrackFeatures({
               danceability: trackres.data.danceability,
@@ -107,9 +108,9 @@ function Main() {
               key: trackres.data.key,
             });
           })
-          .catch((error) => console.log(error));
+          // .catch((error) => console.log(error));
       })
-      .catch((error) => console.log(error));
+      // .catch((error) => console.log(error));
   }, [search, trackID, artistSearch]);
 
   return (
