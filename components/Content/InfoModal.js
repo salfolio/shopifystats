@@ -76,7 +76,7 @@ function InfoModal(props) {
           </div>
           <div className={styles.content}>
             {infoBlockValues.map((element) => {
-              return <InfoBlock title={element.title} description={element.description}/>
+              return <InfoBlock key={element.title} title={element.title} description={element.description}/>
             })}
           </div>
         </div>
